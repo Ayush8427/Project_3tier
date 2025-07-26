@@ -3,20 +3,9 @@ const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({
-  origin: 'http://webtierlb-1303649568.ap-south-1.elb.amazonaws.com',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-}))
-
+const app = express();
+app.use(cors());
 app.use(express.json());
-
-
-// Optional: Log all requests to debug
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
 // ✅ Hardcoded DB connection
 const db = mysql.createConnection({
   host: 'projectdb.c38gwa8im07y.ap-south-1.rds.amazonaws.com',
